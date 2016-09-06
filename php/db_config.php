@@ -3,7 +3,7 @@
     $db = array(
         'servername' => 'localhost',
         'database' => 'faq idsignage',
-        'username' => 'root',
+        'username' => 'Jeroen',
         'password' => ''
     );    
 

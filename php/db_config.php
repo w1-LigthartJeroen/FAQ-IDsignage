@@ -1,25 +1,15 @@
 <?php
-
-    $db = array(
-        'host' => 'localhost',
-        'dbName' => 'faqIdsignage',
-        'user' => 'BERTHA\SQLEXPRESS',
-        'pass' => ''
-    );    
-
     try
     {
-        $db = new PDO('mysql:host='.$db['host'].';dbName=' . $db['dbName'], $db['user'], $db['pass']);
+        //connectie met sql-server
+	    $pdo = new PDO('sqlsrv:server=BERTHA\SQLEXPRESS;database=faqIdsignage;','','');
+	    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    catch(PDOException $e)
+    catch (PDOException $e)
     {
-        $msg = '<p>
-                Regelnummer: ' . $e->getLine() . '<br>
-                Bestand: ' . $e->getFile() . '<br>
-                Foutmelding ' . $e->getMessage() . '
-                </p>';
-
-        trigger_error($msg);
+	    die ('Unable to connect to the database server.' . $e->getMessage());
     }
+        echo 'Database connection established.';
+
 ?>
